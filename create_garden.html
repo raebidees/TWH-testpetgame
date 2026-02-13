@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <head>
+        <title>Garden [EG]</title>
+        <link rel="stylesheet" type="text/css"  href="shared.css" />
+        <link rel="icon" href="https://i.imgur.com/U7WgCMt.png">
+    </head>
+    <body onload="">
+    <script type="text/javascript" src="./built/virtually_universal_config.js"></script>
+    <div id=create_garden_organizer class="collection_row" style="display: flex; flex-wrap: wrap">
+        <div id=garden_options_menu class=garden_util_box style="width:25em; padding-left: 1%; height:fit-content;">
+          <div>
+            <h3>Settings</h3>
+              <label for="quantity">Width:</label> <input class="garden-dim-bar" type="text" inputmode="numeric" id="garden_width" name="quantity" min="64" value=450>
+          <label for="garden_height">Height:</label>
+          <input class="garden-dim-bar" type="text" inputmode="numeric" id="garden_height" name="garden_height" min="70" value=100>
+        <label for="garden_scale">Scale:</label> <input class="garden-dim-bar" type="text" inputmode="numeric" id="garden_scale" name="garden_scale" value=1 step="0.25">
+            </br>
+        </div>
+        <h3>Options</h3>
+        <div id="garden_toggles_div"></div>
+        <h3>Utilities</h3>
+        <div id="garden_utilities_div"></div>
+  </div>
+  <a href="./" class="index_link" style="left: 10px; top: 20px"><--Home</a>
+                  <div id=seed_collection_display_container class=garden_util_box style="border: none; flex-grow: 1">
+                    <h1 id="title">Endless Garden Creator</h1>
+                <div style="display: block">
+                  <a href='javascript:void(0);' id="toggle_left_menu" title="Toggle the visibility of the sort/display menu"><< hide options</a>
+                  <span> || </span>
+                  <a href='javascript:void(0);' id="toggle_right_menu" title="Toggle the visibility of the seed interactions menu">hide layers >></a><br><br>
+                </div>
+        <label for="seed_list">Seed list (comma-separated):</label><br>
+        <textarea id="seed_list" name="seed_list" size="4" placeholder="Click here and paste!"></textarea><br>
+                <input type="button" class="chunky_wrap" value="Randomize" id="randomizer" title="Create a randomized garden using seeds from your collection">
+                <input type="button" class="chunky_wrap" id="claimer" value="Save">
+        <input type="button" class="chunky_wrap" value="Load" id="loader" title="Load a garden from a text blob. You get that when you claim a garden."></br>
+        <br><br>
+        <div id=content_div>
+            <div id="output"><canvas id="output_canvas" width="450" height="80"></canvas></div>
+            </br>
+            <input type="button" class="chunky_wrap" id="regenerator" value="&gt;&gt; Generate the garden!&lt;&lt;">
+        </div>
+        <br>
+        <div id="manual_seed_control_div">
+        <div id=seed_positioning_grid_div></div>
+        <div id=seed_positioning_menu_div style="display: none">
+          <div id="seed_positioning_display">
+            <canvas id="seed_positioning_canvas"></canvas>
+            <div id="seed_positioning_controls" style="display: inline-block">
+              <span id="seed_positioning_desc"></span><br>
+              <label for="seed_positioning_flip_check" value="flipped" title="Horizontally mirror this sprite">flip: </label>
+              <input type="checkbox" id="seed_positioning_flip_check"/><br>
+              <label for="seed_positioning_position_mode" title="Choose how to pick seed's position">position: </label>
+              <input type="radio" id="seed_positioning_random" name="seed_positioning_position_mode" value="random position">
+              <label for="seed_positioning_random">random</label>
+              <input type="radio" id="seed_positioning_fixed" name="seed_positioning_position_mode" value="fixed position">
+              <label for="seed_positioning_fixed">fixed</label><br>
+              <input type="range" id="seed_positioning_offset" min="-10" max="100" style="width: 100%"/><br>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+              </div>
+      </div>
+    </div>
+    <script type="module" src="built/page_specific/create_garden.js"></script>
+
+    <script type="text/javascript">
+</script>
+    </body>
+</html>
