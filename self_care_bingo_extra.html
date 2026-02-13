@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--This was created for Nature Dominance, then repurposed for "an endless garden". Don't redistribute or reskin. Thank you!-->
+<html>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
+    <head>
+        <title>Self-Care Bingo Extras[EG]</title>
+        <link rel="stylesheet" type="text/css"  href="shared.css" />
+        <link rel="icon" href="https://i.imgur.com/AiYQLSq.png">
+        <style>
+        body {
+            background: #2f1847; /* fallback for old browsers */
+            background: linear-gradient(to right, #240f3a, #8d5185); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .dotted_plant_box {
+            border-color: #cfa8ca;
+        }
+        </style>
+        <title>Self-Care Bingo</title>
+    </head>
+    <a href="./" class="index_link"><--Home</a>
+    <body onload="do_setup()">
+        <div class='center-parent'>
+          <label id="smaller-title"><b>Self-Care Bingo Extras</b></label><br><br>
+          <div style="text-align: center">
+               <input id="extra_icons" type="checkbox" name="extra_icons" onchange="toggle_extra_icons()"> Use extra icons
+               <input id="display_hints" type="checkbox" name="display_hints" onchange="toggle_hints()" style="margin-left: 10px;" checked> Display hints
+          </div>
+           <p id="seed_list">Welcome to the Extras board! There's over a hundred squares available, but not all of them will be useful to everyone. In the future, the plants you earn will be frontloaded around the first 10 or so squares, so you can focus on finding stuff that'll help you personally, rather than full-board clears! Until I implement that, the board's contents won't be fixed per-day (though its rewards will be), so feel free to refresh until you get one you like. And thanks for using the tool! :]</p>
+          <p id="seed_list">No <a href="https://www1.flightrising.com/forums/adopt/3112071">seeds</a> earned yet!</p>
+        </div>
+        <div id="board_div" class='center-parent'></div>
+        <div class='center-parent'><br><span id="bingo_hint" style="margin: 10px;"></span></div>
+        <div id="bingo_plant_container_div" class='center-parent'><div id=bingo_plant_div class=got_bingo_box></div>Fantastic work!</div>
+    </body>
+    <script type="module" src="./built/bingo.js"></script>
+    <script type="text/javascript">
+    const d = new Date();
+
+    var bingo_border_color = "#cfa8ca";
+    // Fun fact! Javascript apparently numbers days 1-31 but months 0-11. We toString so it doesn't matter, but it's interesting.
+    // Anyways, this (messily) ensures a fixed set of plants each day. I'd prefer something more OO come refactor time.
+    var forced_random_seed = d.getDate().toString()+d.getMonth().toString()+d.getFullYear().toString()+"extracare_salt";
+    alert("This bingo board's been broken for awhile and I didn't even notice! :( I'm going to bring it back properly as part of a bingo polish-up, but to make sure it's available in the short term, I added most of its challenges as an optional challenge category over on the coli board, look for 'self-care extra'.")
+    </script>
+</html>
