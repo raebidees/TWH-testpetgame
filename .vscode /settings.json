@@ -1,0 +1,7 @@
+{
+  "eslint.validate": [ "javascript", "html" ],
+  "files.exclude": {
+    "**/*.js": { "when": "$(basename).ts" },
+    "**/**.js": { "when": "$(basename).tsx" }
+}
+}
