@@ -1,31 +1,153 @@
 <!DOCTYPE html>
-<html>
-    <meta charset="utf-8"/>
+<html lang="en">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
     <head>
-        <title>oh boy!!twh</title>
+        <title>Endless Garden</title>
         <link rel="stylesheet" type="text/css"  href="shared.css" />
-        <link rel="icon" href="https://i.imgur.com/quyjlS6.png">
+        <link rel="icon" href="images/icons/main.png">
     </head>
     <body>
-        <h1 id="title">TWH - Voiddoggies</h1>
-        <h2 id="subtitle">bye</h2>
+        <script type="text/javascript" src="./built/virtually_universal_config.js"></script>
+        <h1 id="title">An Endless Garden</h1>
+        <h3 id="subtitle">Pixel plants to celebrate your achievements, tools to help with them, and gardens to build from them</h3>
         <div id=content_div>
             <div id="directory_div">
-                <h2>Directory</h2>
-                <label for="garden_link"><img src="https://i.imgur.com/U7WgCMt.png" alt="Garden generator favicon"></label><a id="garden_link" class="directory_link" href="random_garden.html">Garden Generator</a><br>
-                <label for="utils_link"><img src="https://i.imgur.com/13AXCvH.png" alt="Garden utils favicon"></label><a id="utils_link" class="directory_link" href="garden_utils.html">Plant Utilities</a><br>
-                <label for="swap_link"><img src="https://i.imgur.com/ufm0hIO.png" alt="Seed swap favicon"></label><a id="swap_link" class="directory_link" href="seed_swap.html">Seed Swap</a><br>
-                <label for="sprite_link"><img src="https://i.imgur.com/fRqhbd7.png" alt="Sprite tester favicon"></label><a id="sprite_link" class="directory_link" href="sprite_tester.html">Sprite Tester</a><br>
-                <label for="todo_link"><img src="https://i.imgur.com/SIQJ3U0.png" alt="To-do favicon"></label><a id="todo_link" class="directory_link" href="to_do.html">To-Do List</a><br><br>
+                <h2>Tools</h2>
+                <label for="collection_link"><img src="images/icons/collection.png" alt="Collection favicon"></label><a id="collection_link" class="directory_link" href="collection.html">Collection</a><br>
+                <label for="completion_link"><img src="images/icons/completion.png" alt="Completion tracker favicon"></label><a id="completion_link" class="directory_link" href="completion_tracker.html">Completion Tracker</a><br>
+                <label for="garden_link"><img src="images/icons/garden.png" alt="Garden generator favicon"></label><a id="garden_link" class="directory_link" href="create_garden.html">Garden Creator</a><br>
+                <!--<label for="wander_link"><img src="https://i.imgur.com/ipVjeXb.png" alt="Wander favicon"></label><a id="wander_link" class="directory_link" href="wander.html">???</a><br><br>-->
+                <br>
+                <h2>Plants</h2>
+                <label for="swap_link"><img src="images/icons/swap.png" alt="Seed swap favicon"></label><a id="swap_link" class="directory_link" href="seed_swap.html">Seed Swap</a><br>
+                <label for="todo_link"><img src="images/icons/todo.png" alt="To-do favicon"></label><a id="todo_link" class="directory_link" href="to_do.html">To-Do List</a><br>
+                <label for="bits_link"><img src="images/icons/bits.png" alt="bits favicon"></label><a id="bits_link" class="directory_link" href="bitsnbobs.html">Bits 'n Bobs</a><br>
                 <h3>Bingo boards:</h3>
-                <label for="coli_link"><img src="https://i.imgur.com/zevR9Uz.png" alt="Coli bingo favicon"></label><a id="coli_link" class="directory_link" href="overgrowth_bingo.html">Coli</a>
-                <label for="coli_link"><img src="https://i.imgur.com/Q3X0I62.png" alt="Self-Care bingo favicon"></label><a id="coli_link" class="directory_link" href="self_care_bingo.html">Self-Care</a>
-                <label for="coli_link"><img src="https://i.imgur.com/AiYQLSq.png" alt="Extra Self-Care bingo favicon"></label><a id="coli_link" class="directory_link" href="self_care_bingo_extra.html">Self-Care Extras</a><br><br>
-
+                <label for="coli_link"><img src="images/icons/bingo_coli.png" alt="Coli bingo favicon"></label><a id="coli_link" class="directory_link" href="bingo.html">Coli</a>
+                <label for="coli_link"><img src="images/icons/bingo_self_care.png" alt="Self-Care bingo favicon"></label><a id="self_care_link" class="directory_link" href="self_care_bingo.html">Self-Care</a>
+                <label for="coli_link"><img src="images/icons/bingo_extra.png" alt="Extra Self-Care bingo favicon"></label><a id="extra_bingo_link" class="directory_link" href="self_care_bingo_extra.html">Self-Care Extras</a><br><br>
+                <br>
+                <h2>Everything Else</h2>
+                <label for="sprite_link"><img src="images/icons/sprite_tester.png" alt="Sprite tester favicon"></label><a id="sprite_link" class="directory_link" href="sprite_tester.html">Sprite Tester</a><br>
+                <label for="palette_link"><img src="images/icons/palette_tester.png" alt="Palette tester favicon"></label><a id="palette_link" class="directory_link" href="palette_tester.html">Palette Tester</a><br> 
+                <label for="settings_link"><img src="images/icons/settings.png" alt="Settings favicon"></label><a id="settings_link" class="directory_link" href="settings.html">Settings</a><br><br> 
+                <!--<h3>Legacy:</h3>
+                <label for="legacy_garden_link"><img src="https://i.imgur.com/U7WgCMt.png" alt="Garden generator favicon"></label><a id="legacy_garden_link" class="directory_link" href="random_garden.html">Old garden generator</a><br>
+                <label for="utils_link"><img src="https://i.imgur.com/ttXOfMp.png" alt="Garden utils favicon"></label><a id="utils_link" class="directory_link" href="garden_utils.html">Utilities</a><br>
+                <label for="legacy_sprite_tester_link"><img src="https://i.imgur.com/fRqhbd7.png" alt="Favicon for the old sprite tester favicon"></label><a id="legacy_sprite_tester_link" class="directory_link" href="sprite_tester_old.html">Old Sprite Tester</a><br>-->
 
                 <h3>What's all this? Where should I start?</h3>
-<span>Our documentation mostly lives on <a href="https://www1.flightrising.com/forums/adopt/3112071/1#post_3112071">this thread</a>. Should have everything you need! If not, ping me over there and I'll help out. -Ori</span>
+                <span>Our documentation mostly lives on <a href="https://www1.flightrising.com/forums/adopt/3112071/1#post_3112071">this thread</a>. Should have everything you need! If not, ping me over there and I'll help out. -Ori</span>
             </div>
         </div>
+<button id="help_button" onclick=toggle_help_text() alt="hover (or click) to display help text">?</button>
+<div id="help_button_text" tabindex="0"></div>
     </body>
+
+    <script>
+// Inevitably, even the index page ends up with javascript.
+const tutorial_stages = [
+    ["Welcome to the Endless Garden","And thanks for stopping by! This site's all about rewarding everyday achievements with a gigantic collection of plants. There's also splicing, trading, gardens, all sorts of stuff!<br><br>For now, click Self-Care and follow the instructions, then clear a few bingo squares. Once a plant (or animal, or rock...) pops up, hit the Home button in the top-left."],
+    ["Congrats on your first plant!","Or 'plant'. We used to only have plants, but now we have everything from deer to magic crystals, you never know what you'll find. Let's go admire your new friend!<br><br>Click on Collection. It's got a lot going on, but for now let's focus on Analyze (the bigger picture of your plant) and Backup (tap the button to make a backup). Make a backup and hit Home when you're done."],
+    ["Saving your progress","Progress is saved automatically, stored in your browser, and never sent anywhere. If you use many browsers/devices, the backup file you just made will let you sync progress between them. If you check out the Settings menu, there's an option for loading backups there, but you can also mess with the site's colors if you like. Next time you return to this page, I'll have some new plants for you!"],
+    ["More plants!", "Looking at your collection, have you noticed some letters above your plant? Those are its 'seed', a sort of genetic code. If someone pastes that seed into their own collection, they'll get the exact same plant. Use seeds to share and trade! Copy the seeds below (commas and all), go to your Collection, hit the Add button, and paste them in.<br><br>D32UmCPUJQ, D5LzrCC883, C2cN1COiq7, D3pckB+mgC, C4tEvCFBek"],
+    ["New ways to get plants", "Do you like the new plants? If not, no worries--it's time to talk about RS, 'raw seedstuff'. If you ever get a plant you don't like, just go to your collection, hit Recycle, tap the plant(s), then 'Recycle Seeds'. That'll trade them for some RS, which you can swap for new plants or use to alter ones you already have. You'll get RS other ways too, like clearings tasks off the To-Do list and bingo boards. Come back here when you have 15 RS! You can check your total in the Collection."],
+    ["Going shopping", "Congrats! Now that you've banked up some RS, we can trade it for more plants. Check out the Seed Swap! New plants show up every day. Get a total of 10 plants in your collection and we'll move on."],
+    ["A growing collection", "You're making wonderful progress! Don't worry about speed, your garden is a marathon, not a sprint, and speaking of gardens...but you'll see that one at 15 plants! For now let's just unlock some more ways to earn plants. The general Bingo board is very powerful, and many people's main way of getting seeds. Bits 'n Bobs is for you creative types, and you can get your own 'personal' seed there either way in the second thingy. See you back here in 5 more plants..."],
+    ["The garden", "Congratulations, your collection's large enough for a garden! The Garden Creator lets you arrange your plants in all sorts of ways. It can get fairly in-depth, but an easy way to start is hitting the Randomize button several times. You'll see layers popping up on the right-hand side, click-drag those to reorder and see what happens. The best way to learn the garden creator is by playing with it!"],
+    ["What next?", "Now that you know your way around, you've unlocked the Completion Tracker. This will let you see how many bases/palettes/goodies you've collected. Check it out now--there's quite a few!"],
+    ["You completed the tutorial!", "The tutorial's over, but there's tons left to do--try mutating your seeds in the Collection, making your own in the Sprite Tester, and generally clicking around! The real heart of your garden is the personal progress it represents. I hope this site helps you, and your garden bears wonderful fruit ♥"],
+];
+
+
+const random_tips = [
+    "In your collection, you can click the base and color names on the Analyze box to filter by that color/base", "Missing a base and not sure what to look for? Try clicking a question mark in the Completion Tracker...",
+    "The garden creator's layers are draggable. They work more or less like layers in GIMP/photoshop.",
+    "You can change the reward in the to-do list by clicking the plant.", "This is a community tool! Most of the really nice bases and colors are community-sourced (and most of the rough ones are dev art :)).",
+    "A lot of things have hover text (not everything yet).", "If you're on mobile, I'm sorry (it used to be worse)", "Most plant-gathering pages 'reroll' on the daily. If you don't like today's selection of prompts/etc, check tomorrow!",
+    "The delete-all-your-data button needs to be held to do anything, don't worry. But still backup regularly.",
+    "The idea that a human being not only can, but must, be endlessly productive is dehumanizing in the most literal way. Needing breaks isn't being lazy, it's being a living thing!",
+    "You can get duplicate plants in the to-do list, and plants all of one color from Bits 'n Bobs prompts. Handy for splicing!",
+    "Want to play around with splices and mutation without spending RS and using up plants? Go to your collection, click add, and look at the 'add to temporary collection' option.",
+    "You don't have to do a backup every day, the points accumulate to a maximum (which should show if you hover on the button).", "Tired of purple? The site colors are editable! Check the Settings menu.",
+    "If you're looking for specific colors, you can turn on color palette display in Settings, as well as mark palettes in the 'Palettes' section of the Completion Tracker."
+]
+
+function lock_link(id){
+    let link = document.getElementById(id);
+    link.href = "javascript:void(0);";
+    link.className = "deactivated_directory_link";
+    link.classList.add("disabled");
+    link.innerText = "???";
+}
+
+function toggle_help_text(){
+    let help_text = document.getElementById("help_button_text");
+    help_text.style.display = help_text.style.display == "block"? "none": "block";
+}
+
+function display_tutorial(){
+    let tutorial_stage = localStorage.tstage == undefined ? 0 : JSON.parse(localStorage.tstage);
+    let help_text = document.getElementById("help_button_text");
+    if(tutorial_stage == -1 || tutorial_stage >= tutorial_stages.length){
+        help_text.innerHTML = "Tutorial complete. There's nothing left to unlock right now, congratulations! Have a random tip:"
+        help_text.innerHTML += ("<br><br>" + random_tips[Math.round(Math.random()*random_tips.length)]);
+        return;
+    } else {
+        help_text.innerHTML = tutorial_stages[tutorial_stage][0] + ": " + tutorial_stages[tutorial_stage][1];
+
+    }
+    let skip_modal = false;
+    if(tutorial_stage == 1 || tutorial_stage == 6 || tutorial_stage == 7){
+        collection_size = localStorage["seed_collection"] == undefined ? 0 : localStorage["seed_collection"].split(",").length;
+        if(tutorial_stage == 1 && collection_size < 1){skip_modal = true;};
+        if(tutorial_stage == 6 && collection_size < 10){skip_modal = true;};
+        if(tutorial_stage == 7 && collection_size < 15){skip_modal = true;};
+    }
+    if(tutorial_stage == 5){
+        seedpoints = localStorage["seed_points"] == undefined? 0 : JSON.parse(localStorage.seed_points);
+        if(seedpoints < 15){ skip_modal = true};
+    }
+    if(!skip_modal){
+        const modal = document.createElement("div");
+        modal.classList.add("block_window");
+        document.body.appendChild(modal);
+        const modal_display = document.createElement("div");
+        modal_display.classList.add("bingo-popup");
+        modal_display.style.padding = "2em";
+        const header = document.createElement("h2");
+        header.textContent = tutorial_stages[tutorial_stage][0];
+        header.style.textAlign = "center";
+        modal_display.appendChild(header);
+        const modal_text = document.createElement("p");
+        modal_text.innerHTML = tutorial_stages[tutorial_stage][1];
+        modal_display.appendChild(modal_text);
+        const accept_button = document.createElement("button");
+        accept_button.onclick = function () { localStorage.tstage = tutorial_stage + 1; document.body.removeChild(modal); };
+        accept_button.innerText = "Onwards!";
+        accept_button.classList.add("chunky_fullwidth");
+        modal_display.appendChild(accept_button);
+        if(tutorial_stage == 0){
+            const skip_button = document.createElement("button");
+            skip_button.onclick = function () { localStorage.tstage = -1; document.body.removeChild(modal); location.reload();};
+            skip_button.innerText = "Skip Tutorial";
+            skip_button.classList.add("chunky_fullwidth");
+            modal_display.appendChild(skip_button);
+        }
+        modal.appendChild(modal_display);
+    }
+    // Lock extra links so the site's not super overwhelming
+    if(tutorial_stage == -1){return};
+    if(tutorial_stage<1){lock_link("collection_link")};
+    if(tutorial_stage<4){lock_link("todo_link")};
+    if(tutorial_stage<5){lock_link("swap_link")};
+    if(tutorial_stage<6){lock_link("coli_link"); lock_link("bits_link")};
+    if(tutorial_stage<7){lock_link("garden_link")};
+    if(tutorial_stage<8){lock_link("completion_link")};
+    if(tutorial_stage<9){lock_link("extra_bingo_link"); lock_link("sprite_link"); lock_link("palette_link")};
+}
+
+    display_tutorial();
+    //document.getElementById("help_button").addEventListener("click",);
+    </script>
 </html>
