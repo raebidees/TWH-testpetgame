@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8"/>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Endless Garden Settings</title>
+        <link rel="stylesheet" type="text/css"  href="shared.css" />
+        <link rel="icon" href="https://i.imgur.com/quyjlS6.png">
+    </head>
+    <body>
+        <script type="text/javascript" src="./built/virtually_universal_config.js"></script>
+        <a href="./" class="index_link"><--Home </a>
+        <h1 id="title">Settings</h1>
+        <h2 id="subtitle">Handle your data and configure the site</h2>
+        <div class="center-what-i-hold-fullvert">
+            <div id="data_management_div" class="generic_button_box">
+            <h2>Manage Save Data</h2></br>
+            <button id="doBackup_button" title="Download a backup copy of all your data. Do it early and often! You get 3 rs per day for it (max 15)" class="chunky_fullwidth" value="Backup">Backup</button></br></br>
+            <button type="file" class="chunky_fullwidth" id="import_data_button">Load Backup</button></br>
+            <input type="file" style="display: none" id="save_file_input"></input></br>
+            <button class="chunky_fullwidth" id="reset_tutorial_button">Reset Tutorial</button>
+            <button class="chunky_fullwidth" id="delete_data_button">Delete All Data</button>
+        </div>
+        <div id="data_management_div" class="generic_button_box">
+            <h2><b class="accent-text">★~*</b>Graphics<b class="accent-text">*~★</b></h2>
+            <h3>General Graphics Settings</h3>
+            <div id="general_graphics_settings"></div>
+            <h3>Color Presets</h3>
+            <div id="graphics_func_div" style="display: flex; flex-wrap:wrap"></div>
+            <h3>Customize Colors</h3>
+            <label>Main:<select type="select" id="pick_background" class="generic_dropdown" value="Main Color" onChange="update_colors"></select></label>
+            <label>Font:<select type="select" id="pick_font" class="generic_dropdown" value="Font Color" onChange="update_colors"></select></label>
+            <label>Else:<select type="select" id="pick_accent" class="generic_dropdown" value="Accent Color" onChange="update_colors"></select></br></label>
+            <div id="graphics_toggle_div" style="margin: 1em; display: flex"></div>
+            <div id="preview_img" style="margin: 1em 0em;"></div>
+            <p style="width: 80%;">This is a block of sample text, intending to let you sample the text elsewhere on the site while sampling the colors with which to color the text. You can also <a href="javascript:void(0);">sample how links look</a> within this sample text. Oh, fun fact, the backup button in the collection will but updated to do the exact same thing as the export button above. <a href="javascript:void(0);">Another fake link for you</a>. Good luck with your gardens!</p>
+        </div>
+        </div>
+<script type="module">
+import {delete_save, export_save, import_save, addSeedPoints, getSeedCollection, gen_func_button, randomFromArray, gen_toggle_button, get_toggle_button_setting, cycle_toggle_value} from "./built/shared.js"
+import {decode_plant_data, gen_plant_data, encode_plant_data_v2, drawPlantForSquare, work_canvas_size} from "./built/gen_plant.js"
+import {all_palettes} from "./built/data.js"
+
+document.getElementById("delete_data_button").onmousedown = delete_save;
+//document.getElementById("export_data_button").onmousedown = export_save;
+document.getElementById("import_data_button").onmousedown = function() {document.getElementById('save_file_input').click();}
+document.getElementById('save_file_input').addEventListener('change', import_save);
+if (localStorage["last_backup"] == undefined) { localStorage["last_backup"] = new Date() }
+let days_since_backup = Math.round((+new Date() - +new Date(localStorage["last_backup"])) / 8.64e7);
+const backup_sp_per_day = 3;
+const max_sp_for_backup = 15;
+console.log(days_since_backup);
+if (days_since_backup > 0) {
+    document.getElementById("doBackup_button").innerText = "Backup (+" + Math.min(days_since_backup * backup_sp_per_day, max_sp_for_backup) + " rs)";
+}
+// Direct copy of the one from the collection, once the dust settles they should probably be in Shared
+document.getElementById("doBackup_button").onclick = function(){
+    export_save();
+    let rewarded_points = Math.min(days_since_backup * backup_sp_per_day, max_sp_for_backup);
+    if (rewarded_points > 0) {
+        addSeedPoints(rewarded_points);
+        localStorage["last_backup"] = new Date();
+        location.reload();
+    }
+    document.getElementById("doBackup_button").value = "Backup";
+}
+document.getElementById("reset_tutorial_button").onmousedown = function(){
+    localStorage.tstage = 0;
+    document.getElementById("reset_tutorial_button").innerText = "Tutorial Reset!";
+    setTimeout(()=>{document.getElementById("reset_tutorial_button").innerText = " Reset Tutorial"}, 1000);
+}
+
+function set_plants_display_palettes(){
+    let show_palettes = get_toggle_button_setting("Earnable plants show palettes");
+    if(show_palettes){localStorage["dp"] = 1;} else {localStorage["dp"] = 0;}
+    location.reload();
+}
+
+document.getElementById("general_graphics_settings").appendChild(gen_toggle_button("Earnable plants show palettes", set_plants_display_palettes, localStorage.dp==="1"));
+
+let palette_lookup = {};
+let popular_palettes = {};
+for(let i=0; i<all_palettes.length; i++){ palette_lookup[all_palettes[i]["name"]] = i; popular_palettes[i] = 0;}
+const popularity_threshold = 1;
+
+const guaranteed_palettes = [palette_lookup["shade"], palette_lookup["flaxmetal"], palette_lookup["wintergreen"],
+                             palette_lookup["lignite"], palette_lookup["snowblind"], palette_lookup["ghost"]];
+
+const color_pickers = [document.getElementById("pick_background"), document.getElementById("pick_font"), document.getElementById("pick_accent")];
+let available_palettes;
+
+function setup_options(){
+    
+    for(let palette of guaranteed_palettes){
+        popular_palettes[palette] = popularity_threshold;
+    }
+    let seed_list = getSeedCollection();
+    const palette_categories = ["foliage_palette", "feature_palette", "accent_palette"];
+
+    for (let seed of seed_list) {
+        let seed_data = decode_plant_data(seed);
+        for (let palette_category of palette_categories){
+            let palette = seed_data[palette_category];
+            popular_palettes[palette] += 1;
+        }
+    }
+
+    available_palettes = [];
+    for (let palette_num of Object.keys(popular_palettes)){
+        if(popular_palettes[palette_num] > 0){
+            available_palettes.push(all_palettes[palette_num]["name"]);
+        }
+    }
+    available_palettes.sort();
+    for(let picker of color_pickers){
+        for(let palette of available_palettes) {
+            let option = document.createElement('option');
+            option.text = option.value = palette;
+            picker.add(option);
+        }
+    }
+    let jraphics;
+    if (localStorage.jraphicsTM == undefined) { jraphics = [124, 125, 126, 0, 0, 0];}
+    else {jraphics = JSON.parse(localStorage.jraphicsTM);}
+    color_pickers[0].selectedIndex = available_palettes.indexOf(all_palettes[jraphics[0]]["name"]);
+    color_pickers[1].selectedIndex = available_palettes.indexOf(all_palettes[jraphics[1]]["name"]);
+    color_pickers[2].selectedIndex = available_palettes.indexOf(all_palettes[jraphics[2]]["name"]);
+    color_pickers[0].onchange = function(){update_colors()};
+    color_pickers[1].onchange = function(){update_colors()};
+    color_pickers[2].onchange = function(){update_colors()};
+
+    add_preview_square(document.getElementById("preview_img"), "hover");
+    add_preview_square(document.getElementById("preview_img"), "over");
+    add_preview_square(document.getElementById("preview_img"), "us");
+    document.getElementById("graphics_func_div").appendChild(gen_func_button("default", function(){load_palettes("shade", "flaxmetal", "wintergreen", false, false, false)}));
+    document.getElementById("graphics_func_div").appendChild(gen_func_button("light", function(){load_palettes("ghost", "lignite", "wintergreen", false, true, true)}));
+    document.getElementById("graphics_func_div").appendChild(gen_func_button("dark", function(){load_palettes("lignite", "snowblind", "ghost", false, false, false)}));
+    document.getElementById("graphics_func_div").appendChild(gen_func_button("random", function(){load_palettes(randomFromArray(available_palettes), randomFromArray(available_palettes), randomFromArray(available_palettes), Math.round(Math.random()), Math.round(Math.random()), Math.round(Math.random()))}));
+    document.getElementById("graphics_toggle_div").appendChild(gen_toggle_button("Flip Main", update_colors, jraphics[3]));
+    document.getElementById("graphics_toggle_div").appendChild(gen_toggle_button("Flip Font", update_colors, jraphics[4]));
+    document.getElementById("graphics_toggle_div").appendChild(gen_toggle_button("Flip Else", update_colors, jraphics[5]));
+}
+
+function update_colors(){
+    let bg_palette = all_palettes[palette_lookup[color_pickers[0].value]]["palette"];
+    if(get_toggle_button_setting("Flip Main")){bg_palette = Array.from(bg_palette); bg_palette.reverse()};
+    document.documentElement.style.setProperty("--background-color", "#"+bg_palette[3]);
+    document.documentElement.style.setProperty("--input-color", "#"+bg_palette[2]);
+    document.documentElement.style.setProperty("--hover-color", "#"+bg_palette[1]);
+    document.documentElement.style.setProperty("--flash-color", "#"+bg_palette[0]);
+    let font_palette = Array.from(all_palettes[palette_lookup[color_pickers[1].value]]["palette"]);
+    if(get_toggle_button_setting("Flip Font")){font_palette = Array.from(font_palette); font_palette.reverse()};
+    document.documentElement.style.setProperty("--text-outline", "#"+font_palette[3]);
+    document.documentElement.style.setProperty("--font-color", "#"+font_palette[1]);
+    document.documentElement.style.setProperty("--link-color", "#"+font_palette[0]);
+    let else_palette = Array.from(all_palettes[palette_lookup[color_pickers[2].value]]["palette"]);
+    if(get_toggle_button_setting("Flip Else")){else_palette = Array.from(else_palette); else_palette.reverse()};
+    document.documentElement.style.setProperty("--accent-medium", "#"+else_palette[2]);
+    document.documentElement.style.setProperty("--accent-bright", "#"+else_palette[0]);
+    saveColors();
+};
+
+// Largely similar to bingo squares
+function add_preview_square(parent, msg) {
+    let swap_square = document.createElement('button');
+    let id = "preview_image_plant"+msg;
+    swap_square.id = id;
+    swap_square.className = 'swap_box';
+    let plant_data = gen_plant_data(0);
+    let seed = encode_plant_data_v2(plant_data);
+    let data_url = drawPlantForSquare(seed);
+    swap_square.style.background = 'url(' + data_url + ')  no-repeat center center';
+    swap_square.style.backgroundSize = work_canvas_size*3 + "px";
+    let label = document.createElement('label')
+    label.htmlFor = id;
+    label.className = 'label_over_plant_canvas';
+    label.style.position = "relative";
+    label.style.top = "5%";
+    let label_text = msg;
+    label.appendChild(document.createTextNode(label_text));
+    label.style.verticalAlign = "top";
+    swap_square.appendChild(label);
+    parent.appendChild(swap_square);
+}
+
+function load_palettes(background, font, accent, reverse_background, reverse_font, reverse_accent){
+    color_pickers[0].value = background;
+    color_pickers[1].value = font;
+    color_pickers[2].value = accent;
+    if(get_toggle_button_setting("Flip Main") != reverse_background){cycle_toggle_value("Flip Main", ()=>{});}
+    if(get_toggle_button_setting("Flip Font") != reverse_font){cycle_toggle_value("Flip Font", ()=>{});}
+    if(get_toggle_button_setting("Flip Else") != reverse_accent){cycle_toggle_value("Flip Else", ()=>{});}
+    update_colors();
+}
+
+function saveColors(){ localStorage["jraphicsTM"] = JSON.stringify([
+    palette_lookup[color_pickers[0].value],
+    palette_lookup[color_pickers[1].value],
+    palette_lookup[color_pickers[2].value],
+    get_toggle_button_setting("Flip Main"),
+    get_toggle_button_setting("Flip Font"),
+    get_toggle_button_setting("Flip Else")]
+)}
+
+setup_options();
+
+</script>
+</body>
+</html>
