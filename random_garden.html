@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+
+<head>
+    <title>Garden [EG]</title>
+    <link rel="stylesheet" type="text/css" href="shared.css" />
+    <link rel="icon" href="https://i.imgur.com/U7WgCMt.png">
+</head>
+
+<body onload="do_preload()">
+    <script type="text/javascript" src="./built/virtually_universal_config.js"></script>
+    <a href="./" class="index_link"><--Home< /a>
+            <h1 id="title">Endless Garden Generator</h1>
+            <h2 id="subtitle">Use seeds to generate a garden. Add extra copies of a seed to insert more plants.</h2>
+            </br>
+            <label for="seed_list">Seed list (comma-separated):</label><br>
+            <textarea id="seed_list" name="seed_list" size="4" placeholder="Click here and paste!"></textarea><br>
+            <!-- custom styling is to allow options to wrap to new line on zoom -->
+            <div id="garden_settings_div" style="display: flex; flex-direction: row; flex-wrap:wrap">
+                <div class="garden_settings_option"><label for="use_smart_spacing">Use smart spacing:</label><input
+                        type="checkbox" id="use_smart_spacing" value="Use smart spacing" checked></div>
+                <div class="garden_settings_option"><label for="pick_ground">Pick ground:</label><select type="select"
+                        id="pick_ground" class="garden_dropdown" value="Pick Ground"
+                        onChange="current_ground=pick_ground.value"></select></div>
+                <div class="garden_settings_option"><label for="quantity">Garden width:</label> <input
+                        class="garden-dim-bar" type="text" inputmode="numeric" id="garden_width" name="quantity" min="64" value=450></div>
+                <div class="garden_settings_option"><label for="garden_height">Garden height:</label> <input
+                        class="garden-dim-bar" type="text" inputmode="numeric" id="garden_height" name="garden_height" min="70" value=70>
+                </div>
+                <div class="garden_settings_option"><label for="draw_outline">Draw outline:</label><input
+                        type="checkbox" id="draw_outline" value="Draw outline"></div>
+                <div class="garden_settings_option"><label for="pick_background_color">Sky:</label><select type="select"
+                        id="pick_background_color" class="garden_dropdown" value="none"
+                        onChange="background_color=pick_background_color.value"></select></div>
+                <div class="garden_settings_option"><label for="pick_background_style">Sky style:</label><select
+                        type="select" id="pick_background_style" class="garden_dropdown" value="gradient"
+                        onChange="background_style=pick_background_style.value"></select></div>
+                <div class="garden_settings_option"><label for="draw_starfield">Stars:</label><input type="checkbox"
+                        id="draw_starfield"></div>
+                <div class="garden_settings_option"><label for="pick_midground">Midground:</label><select type="select"
+                        id="pick_midground" class="garden_dropdown" value="none"
+                        onChange="midground=pick_midground.value"></select></div>
+            </div>
+            <div id=content_div>
+                </br></br>
+                <input type="button" class="chunky" value="&gt;&gt; Generate a garden!&lt;&lt;"
+                    onClick="gen_randogarden()">
+                </br></br>
+                <div id="output"><canvas id="output_canvas" width="450" height="70"></canvas></div>
+                </br></br>
+                <input type="button" class="chunky_wrap" value="Scramble" onClick="scramble_randogarden()">
+                <input type="button" class="chunky_wrap" value="Reroll ground"
+                    onClick="place_ground(scramble_ground=true)">
+                <input type="button" class="chunky_wrap" value="Claim" onClick="claim_garden()"></br>
+                <input type="button" class="chunky_wrap" value="TEMP NEW: Random from collection!"
+                    onClick="random_from_collection()">
+            </div>
+</body>
+<script src="built/data.js"></script>
+<script src="built/shared.js"></script>
+<script src="built/gen_plant.js"></script>
+<script src="built/gen_garden.js"></script>
+
+<script type="text/javascript">
+
+    function random_from_collection() {
+        let collection = getSeedCollection();
+        let goodies = getGoodieCollection();
+        collection.push(...goodies.map(function (x) { return "!" + x; }));
+        let num_plants = Math.random() * (12 - 3) + 3;
+        let chosen_seeds = [];
+        for (let i = 0; i < num_plants; i++) {
+            chosen_seeds.push(collection[Math.floor(Math.random() * collection.length)]);
+        }
+        document.getElementById("seed_list").value = chosen_seeds.join(", ");
+        gen_randogarden();
+    }
+</script>
+</body>
+
+</html>
