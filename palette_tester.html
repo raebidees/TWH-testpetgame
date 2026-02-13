@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8"/>
+    <head>
+        <title>Palette Tester [EG]</title>
+        <link rel="stylesheet" type="text/css"  href="shared.css" />
+        <link rel="icon" href="https://i.imgur.com/pFuZrH6.png">
+    </head>
+    <body>
+    <script type="text/javascript" src="./built/virtually_universal_config.js"></script>
+    <div id=create_garden_organizer style="display: flex">
+      <div style="width: 100%">
+        <a href="./" class="index_link"><--Home</a>
+        <h1 id="title">Palette Tester</h1>
+        <h2 id="subtitle">Test and compare palettes, including custom ones</h2>
+        </br>
+        <div style="display: none">
+          <label for="quantity">Garden width:</label> <input class="garden-dim-bar" type="number" id="garden_width" name="quantity" min="64" value=450>
+          <label for="garden_height">Garden height:</label> <input class="garden-dim-bar" type="number" id="garden_height" name="garden_height" min="70" value=70>
+          <label for="draw_outline" style="margin-left: 10px">Draw outline:</label><input type="checkbox" id="draw_outline" value="Draw outline">
+          <input type="button" class="chunky_wrap" value="Toggle Editor" onClick="gm.toggleVisibility()">
+          <label for="seed_list">Edit test seeds:</label><br>
+          <textarea id="seed_list" name="seed_list" style="max-height: 5%">CumHmCNz-D%-2, CgHXGCAb+v%8, CvwKqC6otQ%21, Ctc3mCPTYy%33, CqxieC2++9%46, CjhefCPs3i%58, Cd-0jB+QFh%71, CKYGfB-y02%85</textarea><br>
+          <br><br>
+        </div>
+          <div class="center-what-i-hold">
+            <input type="radio" id="all_opt" name="to_edit" value="all" checked>
+            <label for="all_opt">All</label>
+            <input type="radio" id="foliage_opt" name="to_edit" value="foliage">
+            <label for="foliage_opt">Foliage</label>
+            <input type="radio" id="feature_opt" name="to_edit" value="feature">
+            <label for="feature_opt">Feature</label>
+            <input type="radio" id="accent_opt" name="to_edit" value="accent">
+            <label for="accent_opt">Accent</label><br>
+          </div>
+          <div id=content_div>
+              </br></br>
+              <div id="output"><canvas id="output_canvas" width="450" height="70"></canvas></div>
+              </br>
+              <input type="text" id="palette_text" class="basic-text-entry" style="max-width: max(25vw, 200px)"></input>
+          </br>
+          </div>
+          <br>
+          <p>Did you know? You can enter the phrase ARTINTHEFASTLANE into the palette editor to unlock unknown palettes</p>
+      </div>
+    </div>
+    </body>
+    <script type="module" src="./built/page_specific/palette_tester.js"></script>
