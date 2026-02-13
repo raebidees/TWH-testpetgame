@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <title>Completion Tracker</title>
+  <link rel="stylesheet" type="text/css" href="shared.css" />
+  <link rel="icon" href="https://i.imgur.com/eAJt95n.png">
+</head>
+<body style="display:flex; flex-direction:column; justify-content:center;">
+  <script type="text/javascript" src="./built/virtually_universal_config.js"></script>
+  <a href="./" class="index_link"><--Home </a>
+      <div>
+        <h1 id="title">Completion Tracker</h1>
+        <h2 id="subtitle">View a summary of everything you've collected</h2>
+        <input type="button" id="show_bases_button" class="chunky_fullwidth active" value="Bases"></input>
+        <input type="button" id="show_palettes_button" class="chunky_fullwidth" value="Palettes"></input>
+        <input type="button" id="show_goodies_button" class="chunky_fullwidth" value="Goodies"></input>
+        <div id="base_div" class='center-parent' style="text-align: center; width: 95%;">
+          <div id="base_info_div" class="collection-info-div">
+            <div>
+              <canvas id="palette_canvas" width=128 height=96></canvas><br>
+              <input id="reroll_bases_palette" type="button" class="chunky_fullwidth" value="Reroll"></input>
+            </div>
+            <div style="margin-left: 15px; text-align: left">
+              <p id="base_text">View the bases you've discovered! Reroll to see a new color scheme drawn from palettes
+                you've discovered.</p><br>
+            </div>
+          </div>
+          <div id="base_content_div">
+            <p id="load_text">Loading...lots of stuff!</p>
+          </div>
+        </div>
+
+        <div id="palette_div" class='center-parent' style="text-align: center; width: 95%;" hidden>
+          <div id="palette_info_div" class="collection-info-div">
+            <div>
+              <canvas id="palette_canvas_2" width=128 height=96></canvas><br>
+              <input id="mark_palettes" type="button" class="chunky_fullwidth" value="Mark"></input>
+            </div>
+            <div style="margin-left: 15px; text-align: left">
+              <p id=palette_text>View the palettes you've discovered! Click them to build a palette for the base viewer.
+                Click Mark then a palette to toggle a square mark on bingo/swap/etc seeds using that palette.</p><br>
+            </div>
+          </div>
+          <div id="palette_content_div"></div>
+        </div>
+        <div id="" class='center-parent' style="text-align: center; width: 95%"></div>
+
+        <div id="goodie_div" class='center-parent' style="text-align: center; width: 95%;" hidden>
+          <div id="goodie_info_div" class="collection-info-div">
+            <div>
+              <canvas id="goodie_canvas" width=128 height=128></canvas><br>
+              <input id="goodie_claim_button" type="button" class="chunky_fullwidth" value="Claim"
+                style="opacity: 0"></input>
+            </div>
+            <div style="margin-left: 15px; text-align: left">
+              <span id="goodie_name"></span><br><br>
+              <span id="goodie_artist"></span><br><br>
+              <span id="goodie_desc">View your collection of goodies! Click them to show info and unlock them. You can
+                use them as seeds in gardens by putting a ! before their name (ex: !nigel)</span><br><br>
+              <span id="goodie_earn"></span><br><br>
+              <span id="goodie_cost"></span><br>
+            </div>
+          </div>
+          <div id="goodie_content_div"></div>
+        </div>
+        <div id="" class='center-parent' style="text-align: center; width: 95%"></div>
+      </div>
+      <script type="module" src="built/page_specific/completion_tracker.js"></script>
+
+      </script>
+</body>
+
+</html>
