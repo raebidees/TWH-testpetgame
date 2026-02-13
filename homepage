@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8"/>
+    <head>
+        <title>TWH-Voiddoggies</title>
+        <link rel="stylesheet" type="text/css"  href="shared.css" />
+        <link rel="icon" href="https://i.imgur.com/quyjlS6.png">
+    </head>
+    <body>
+        <h1 id="title">Voiddoggies</h1>
+        <h2 id="subtitle">i love collecting little guys!</h2>
+        <div id=content_div>
+            <div id="directory_div">
+                <h2>Directory</h2>
+                <label for="garden_link"><img src="https://i.imgur.com/U7WgCMt.png" alt="Garden generator favicon"></label><a id="garden_link" class="directory_link" href="random_garden.html">Garden Generator</a><br>
+                <label for="utils_link"><img src="https://i.imgur.com/13AXCvH.png" alt="Garden utils favicon"></label><a id="utils_link" class="directory_link" href="garden_utils.html">Plant Utilities</a><br>
+                <label for="swap_link"><img src="https://i.imgur.com/ufm0hIO.png" alt="Seed swap favicon"></label><a id="swap_link" class="directory_link" href="seed_swap.html">Seed Swap</a><br>
+                <label for="sprite_link"><img src="https://i.imgur.com/fRqhbd7.png" alt="Sprite tester favicon"></label><a id="sprite_link" class="directory_link" href="sprite_tester.html">Sprite Tester</a><br>
+                <label for="todo_link"><img src="https://i.imgur.com/SIQJ3U0.png" alt="To-do favicon"></label><a id="todo_link" class="directory_link" href="to_do.html">To-Do List</a><br><br>
+                <h3>Bingo boards:</h3>
+                <label for="coli_link"><img src="https://i.imgur.com/zevR9Uz.png" alt="Coli bingo favicon"></label><a id="coli_link" class="directory_link" href="overgrowth_bingo.html">Coli</a>
+                <label for="coli_link"><img src="https://i.imgur.com/Q3X0I62.png" alt="Self-Care bingo favicon"></label><a id="coli_link" class="directory_link" href="self_care_bingo.html">Self-Care</a>
+                <label for="coli_link"><img src="https://i.imgur.com/AiYQLSq.png" alt="Extra Self-Care bingo favicon"></label><a id="coli_link" class="directory_link" href="self_care_bingo_extra.html">Self-Care Extras</a><br><br>
+
+
+                <h3>What's all this? Where should I start?</h3>
+<span>Our documentation mostly lives on <a href="https://www1.flightrising.com/forums/adopt/3112071/1#post_3112071">this thread</a>. Should have everything you need! If not, ping me over there and I'll help out. -Ori</span>
+            </div>
+        </div>
+    </body>
+</html>
