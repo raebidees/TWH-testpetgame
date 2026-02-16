@@ -1,2 +1,10 @@
 <!DOCTYPE html>
 <button id="bloom_button" title="click me 4 1 bloom :3" class="chunky_fullwidth" value="what">GET BLOOM NOW 4 FREE</button></br></br>
+<script type="module">
+  document.getElementById("bloom_button").onclick = function(){
+    export_save();
+    if (rewarded_points > 0) {
+        addbloomnow(bloom_s);
+        localStorage["last_backup"] = new Date();
+        location.reload();
+    }
