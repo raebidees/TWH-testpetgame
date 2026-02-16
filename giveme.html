@@ -1,1 +1,11 @@
-
+<!DOCTYPE html>
+<button id="bloom_button" title="click me 4 1 bloom :3" class="chunky_fullwidth" value="what">GET BLOOM NOW 4 FREE</button></br></br>
+<script type="module">
+document.getElementById("bloom_button").onclick = function(){
+    export_save();
+    let rewarded_points = Math.min(days_since_backup * backup_sp_per_day, max_sp_for_backup);
+    if (rewarded_points > 0) {
+        addSeedPoints(rewarded_points);
+        localStorage["last_backup"] = new Date();
+        location.reload();
+    }
